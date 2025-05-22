@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nev Media - Futuristic Media Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #0a0a0a;
+      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+    /* Star-like camera flash effect */
+    .star-flash {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 10%, rgba(147, 51, 234, 0.5) 50%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: starFlash 0.5s ease-out forwards;
+      z-index: 0;
+    }
+    @keyframes starFlash {
+      0% { opacity: 1; transform: scale(0) rotate(0deg); }
+      50% { opacity: 0.7; transform: scale(1.5) rotate(45deg); }
+      100% { opacity: 0; transform: scale(2) rotate(90deg); }
+    }
+    /* Glowing text effect */
+    .glow-text {
+      animation: glowText 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowText {
+      from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(147, 51, 234, 0.3); }
+      to { text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(147, 51, 234, 0.8); }
+    }
+    /* Section entrance animation */
+    .section-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .section-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Click effect */
+    .click-effect {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(147, 51, 234, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: clickRipple 0.6s ease-out;
+    }
+    @keyframes clickRipple {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    /* Service card hover effect */
+    .service-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.3) 10%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    /* Portfolio item zoom effect */
+    .portfolio-item img {
+      transition: transform 0.5s ease;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    /* Contact form input glow */
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(147, 51, 234, 0.8);
+      border-color: rgba(147, 51, 234, 1);
+    }
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .hero-text {
+        font-size: 2.5rem;
+      }
+      .section-animate {
+        transform: translateY(20px);
+      }
+      .service-card, .portfolio-item {
+        transform: scale(1);
+      }
+      .service-card:hover, .portfolio-item:hover img {
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-black bg-opacity-90 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-purple-400 glow-text">Nev Media</h1>
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:text-purple-400 transition">Home</a></li>
+        <li><a href="#services" class="hover:text-purple-400 transition">Services</a></li>
+        <li><a href="#portfolio" class="hover:text-purple-400 transition">Portfolio</a></li>
+        <li><a href="#about" class="hover:text-purple-400 transition">About</a></li>
+        <li><a href="#contact" class="hover:text-purple-400 transition">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex items-center justify-center relative section-animate">
+    <div id="star-container" class="absolute inset-0 z-0"></div>
+    <div class="text-center z-10">
+      <h2 class="text-5xl md:text-7xl font-bold glow-text mb-6 hero-text">Nev Media: Create the Future</h2>
+      <p class="text-xl md:text-2xl mb-8">Photography, Videography, Sound & Lights, Music Production</p>
+      <a href="#contact" class="bg-purple-600 hover:bg-purple-800 text-white py-3 px-8 rounded-full text-lg transition transform hover:scale-105">Start Your Project</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 bg-gray-900 relative section-animate">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 glow-text">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="service-card bg-gray-800 p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-semibold mb-4 glow-text">Photography</h3>
+          <p>Capture every moment with stunning, high-resolution imagery for events and brands.</p>
+        </div>
+        <div class="service-card bg-gray-800 p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-semibold mb-4 glow-text">Videography</h3>
+          <p>Produce cinematic videos for commercials, films, and social media.</p>
+        </div>
+        <div class="service-card bg-gray-800 p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-semibold mb-4 glow-text">Sound & Lights</h3>
+          <p>Elevate events with professional audio and dynamic lighting setups.</p>
+        </div>
+        <div class="service-card bg-gray-800 p-6 rounded-lg text-center">
+          <h3 class="text-2xl font-semibold mb-4 glow-text">Music Production</h3>
+          <p>Create unforgettable tracks in our cutting-edge studio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-24 relative section-animate">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 glow-text">Portfolio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="portfolio-item relative overflow-hidden rounded-lg">
+          <img src="https://via.placeholder.com/400x300?text=Photography" alt="Photography" class="w-full h-64 object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+            <p class="text-white text-lg glow-text">Photography Project</p>
+          </div>
+        </div>
+        <div class="portfolio-item relative overflow-hidden rounded-lg">
+          <img src="https://via.placeholder.com/400x300?text=Videography" alt="Videography" class="w-full h-64 object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+            <p class="text-white text-lg glow-text">Videography Project</p>
+          </div>
+        </div>
+        <div class="portfolio-item relative overflow-hidden rounded-lg">
+          <img src="https://via.placeholder.com/400x300?text=Event" alt="Event" class="w-full h-64 object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition">
+            <p class="text-white text-lg glow-text">Event Production</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-gray-900 relative section-animate">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 glow-text">About Nev Media</h2>
+      <p class="text-lg text-center max-w-3xl mx-auto">Nev Media is a visionary media company pushing creative boundaries. From breathtaking photography to immersive sound and lighting, we craft experiences that captivate and inspire.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 relative section-animate">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 glow-text">Contact Us</h2>
+      <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg">
+        <div class="grid grid-cols-1 gap-6">
+          <input type="text" id="name" placeholder="Your Name" class="form-input bg-gray-900 p-4 rounded-lg border border-gray-600 text-white">
+          <input type="email" id="email" placeholder="Your Email" class="form-input bg-gray-900 p-4 rounded-lg border border-gray-600 text-white">
+          <textarea id="message" placeholder="Your Message" rows="5" class="form-input bg-gray-900 p-4 rounded-lg border border-gray-600 text-white"></textarea>
+          <button id="submit-btn" class="bg-purple-600 hover:bg-purple-800 text-white py-3 px-8 rounded-full text-lg transition transform hover:scale-105">Send Message</button>
+        </div>
+        <p class="text-center mt-6">Or reach us at: <a href="mailto:contact@nevmedia.com" class="text-purple-400">contact@nevmedia.com</a> | (123) 456-7890</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-6 text-center relative section-animate">
+    <p>© 2025 Nev Media. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Star-like camera flash effect
+    const starContainer = document.getElementById('star-container');
+    function createStarFlash() {
+      const flash = document.createElement('div');
+      flash.className = 'star-flash';
+      const size = Math.random() * 80 + 40;
+      flash.style.width = `${size}px`;
+      flash.style.height = `${size}px`;
+      flash.style.left = `${Math.random() * window.innerWidth}px`;
+      flash.style.top = `${Math.random() * window.innerHeight}px`;
+      starContainer.appendChild(flash);
+      setTimeout(() => flash.remove(), 500);
+    }
+    setInterval(createStarFlash, 800);
+
+    // Click ripple effect
+    document.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'click-effect';
+      ripple.style.left = `${e.clientX - 10}px`;
+      ripple.style.top = `${e.clientY - 10}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+
+    // Section visibility animation on scroll
+    const sections = document.querySelectorAll('.section-animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Contact form submission (simulated)
+    document.getElementById('submit-btn').addEventListener('click', () => {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (name && email && message) {
+        alert('Message sent! We will get back to you soon.');
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Please fill out all fields.');
+      }
+    });
+
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      document.querySelectorAll('.section-animate').forEach(section => {
+        const speed = 0.2;
+        section.style.backgroundPositionY = `${scrolled * speed}px`;
+      });
+    });
+  </script>
+</body>
+</html>
